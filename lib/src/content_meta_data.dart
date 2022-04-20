@@ -225,7 +225,7 @@ Class for describing metadata for a piece of content represented by a FlutterBra
 */
 class BranchContentMetaData {
   /// Schema for the qualifying content item. Please see [BranchContentSchema]
-  BranchContentSchema? contentSchema;
+  BranchContentSchema contentSchema;
 
   /// Quantity of the thing associated with the qualifying content item
   double quantity = 0;
@@ -234,7 +234,7 @@ class BranchContentMetaData {
   double price = 0;
 
   /// Currency type associated with the price
-  BranchCurrencyType? currencyType;
+  BranchCurrencyType currencyType;
 
   /// Holds any associated store keeping unit
   String sku = '';
@@ -247,10 +247,10 @@ class BranchContentMetaData {
 
   /// Category of product if this metadata is for a product
   /// Value should be one of the enumeration from {@link ProductCategory}
-  BranchProductCategory? productCategory;
+  BranchProductCategory productCategory;
 
   /// Condition of the product item. Value is one of the enum constants from {@link CONDITION}
-  BranchCondition? condition;
+  BranchCondition condition;
 
   /// Variant of product if this metadata is for a product
   String productVariant = '';
@@ -283,20 +283,20 @@ class BranchContentMetaData {
   String _addressPostalCode = '';
 
   /// Latitude value  associated with the qualifying content item
-  double? _latitude;
+  double _latitude;
 
   /// Latitude value  associated with the qualifying content item
-  double? _longitude;
+  double _longitude;
 
   List<String> _imageCaptions = const [];
   Map<String, dynamic> _customMetadata = {};
 
-  String? _getProductConditionString(BranchCondition? productCondition) {
+  String _getProductConditionString(BranchCondition productCondition) {
     if (productCondition == null) return null;
     return productCondition.toString().split('.').last;
   }
 
-  String? _getProductCategoryString(BranchProductCategory? productCategory) {
+  String _getProductCategoryString(BranchProductCategory productCategory) {
     if (productCategory == null) return null;
     switch (productCategory) {
       case BranchProductCategory.ANIMALS_AND_PET_SUPPLIES:
@@ -357,11 +357,11 @@ class BranchContentMetaData {
   }
 
   BranchContentMetaData setAddress(
-      {String? street,
-      String? city,
-      String? region,
-      String? country,
-      String? postalCode}) {
+      {String street,
+      String city,
+      String region,
+      String country,
+      String postalCode}) {
     if (street != null) this._addressStreet = street;
     if (city != null) this._addressCity = city;
     if (region != null) this._addressRegion = region;
@@ -383,7 +383,7 @@ class BranchContentMetaData {
     if (this.quantity > 0) ret["quantity"] = this.quantity;
     if (this.price > 0) ret["price"] = this.price;
     if (this.currencyType != null)
-      ret["currency"] = getCurrencyTypeString(this.currencyType!);
+      ret["currency"] = getCurrencyTypeString(this.currencyType);
     if (this.sku.isNotEmpty) ret["sku"] = this.sku;
     if (this.productName.isNotEmpty) ret["product_name"] = this.productName;
     if (this.productBrand.isNotEmpty) ret["product_brand"] = this.productBrand;
@@ -422,7 +422,7 @@ class BranchContentMetaData {
     if (this.quantity > 0) ret["\$quantity"] = this.quantity;
     if (this.price > 0) ret["\$price"] = this.price;
     if (this.currencyType != null)
-      ret["\$currency"] = getCurrencyTypeString(this.currencyType!);
+      ret["\$currency"] = getCurrencyTypeString(this.currencyType);
     if (this.sku.isNotEmpty) ret["\$sku"] = this.sku;
     if (this.productName.isNotEmpty) ret["\$product_name"] = this.productName;
     if (this.productBrand.isNotEmpty)

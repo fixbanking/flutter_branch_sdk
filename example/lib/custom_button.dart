@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  CustomButton({required this.onPressed, required this.child});
+  CustomButton({@required this.onPressed, @required this.child});
 
   final GestureTapCallback onPressed;
   final Widget child;

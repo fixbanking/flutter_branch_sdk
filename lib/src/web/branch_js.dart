@@ -421,7 +421,7 @@ class BranchJS {
   /// Note: Branch.init must be called prior to calling any other Branch functions.
   @JS('init')
   external static void init(String branchKey,
-      [Object? options, Function? callback]);
+      [Object options, Function callback]);
 
   /// link(data, callback)
   /// Parameters

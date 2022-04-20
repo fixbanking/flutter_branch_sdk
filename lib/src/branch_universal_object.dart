@@ -1,5 +1,7 @@
 library flutter_branch_sdk_objects;
 
+import 'package:flutter/material.dart';
+
 part 'branch_event.dart';
 part 'branch_response.dart';
 part 'content_meta_data.dart';
@@ -28,7 +30,7 @@ class BranchUniversalObject {
   String imageUrl = '';
 
   /* Meta data provided for the content. {@link ContentMetadata} object holds the metadata for this content */
-  BranchContentMetaData? contentMetadata;
+  BranchContentMetaData contentMetadata;
 
   /* Content index mode */
   bool publiclyIndex = true;
@@ -45,7 +47,7 @@ class BranchUniversalObject {
 
   ///Create a BranchUniversalObject with the given content.
   BranchUniversalObject(
-      {required this.canonicalIdentifier,
+      {@required this.canonicalIdentifier,
       this.canonicalUrl = '',
       this.title = '',
       this.contentDescription = '',
@@ -101,8 +103,8 @@ class BranchUniversalObject {
     ret["publiclyIndex"] = this.publiclyIndex;
 
     if (this.contentMetadata != null &&
-        this.contentMetadata!.toMap().isNotEmpty)
-      ret["contentMetadata"] = this.contentMetadata!.toMap();
+        this.contentMetadata.toMap().isNotEmpty)
+      ret["contentMetadata"] = this.contentMetadata.toMap();
 
     if (ret.isEmpty) {
       throw ArgumentError('Branch Universal Object is required');
@@ -135,7 +137,7 @@ class BranchUniversalObject {
     ret["\$publicly_indexable"] = this.publiclyIndex;
 
     Map<String, dynamic> contentMetadata = {
-      if (this.contentMetadata != null) ...this.contentMetadata!.toMapWeb()
+      if (this.contentMetadata != null) ...this.contentMetadata.toMapWeb()
     };
 
     if (contentMetadata.containsKey('customMetadata')) {

@@ -5,6 +5,7 @@ import 'dart:js';
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:js_util';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 import 'app_tracking_transparency.dart';
@@ -18,14 +19,14 @@ Map<String, String> _metaData = {};
 
 /// A web implementation of the FlutterBranchSdk plugin.
 class FlutterBranchSdk extends FlutterBranchSdkPlatform {
-  static FlutterBranchSdk? _singleton;
+  static FlutterBranchSdk _singleton;
 
   /// Constructs a singleton instance of [MethodChannelFlutterBranchSdk].
   factory FlutterBranchSdk() {
     if (_singleton == null) {
       _singleton = FlutterBranchSdk._();
     }
-    return _singleton!;
+    return _singleton;
   }
 
   FlutterBranchSdk._();
@@ -41,7 +42,7 @@ class FlutterBranchSdk extends FlutterBranchSdkPlatform {
 
   @Deprecated('version 5.0.0')
   @override
-  void initWeb({required String branchKey}) {}
+  void initWeb({@required String branchKey}) {}
 
   ///Initialises a session with the Branch API
   ///Listen click em Branch Deeplinks
@@ -154,8 +155,8 @@ class FlutterBranchSdk extends FlutterBranchSdkPlatform {
   ///Creates a short url for the BUO
   @override
   Future<BranchResponse> getShortUrl(
-      {required BranchUniversalObject buo,
-      required BranchLinkProperties linkProperties}) async {
+      {@required BranchUniversalObject buo,
+      @required BranchLinkProperties linkProperties}) async {
     Map<String, dynamic> data = buo.toMapWeb();
     linkProperties.getControlParams().forEach((key, value) {
       data['$key'] = value;
@@ -188,9 +189,9 @@ class FlutterBranchSdk extends FlutterBranchSdkPlatform {
   ///Showing a Share Sheet - Implemented via navigator share if available, otherwise browser prompt.
   @override
   Future<BranchResponse> showShareSheet(
-      {required BranchUniversalObject buo,
-      required BranchLinkProperties linkProperties,
-      required String messageText,
+      {@required BranchUniversalObject buo,
+      @required BranchLinkProperties linkProperties,
+      @required String messageText,
       String androidMessageTitle = '',
       String androidSharingTitle = ''}) async {
     BranchResponse response =
@@ -212,8 +213,8 @@ class FlutterBranchSdk extends FlutterBranchSdkPlatform {
   ///Logs this BranchEvent to Branch for tracking and analytics
   @override
   void trackContent(
-      {required List<BranchUniversalObject> buo,
-      required BranchEvent branchEvent}) {
+      {@required List<BranchUniversalObject> buo,
+      @required BranchEvent branchEvent}) {
     JsArray<Object> contentItems = JsArray();
 
     buo.forEach((element) {
@@ -230,7 +231,7 @@ class FlutterBranchSdk extends FlutterBranchSdkPlatform {
 
   ///Logs this BranchEvent to Branch for tracking and analytics
   @override
-  void trackContentWithoutBuo({required BranchEvent branchEvent}) {
+  void trackContentWithoutBuo({@required BranchEvent branchEvent}) {
     try {
       BranchJS.logEvent(
           branchEvent.eventName, _dartObjectToJsObject(branchEvent.toMapWeb()));
@@ -241,7 +242,7 @@ class FlutterBranchSdk extends FlutterBranchSdkPlatform {
 
   ///Mark the content referred by this object as viewed. This increment the view count of the contents referred by this object.
   @override
-  void registerView({required BranchUniversalObject buo}) {
+  void registerView({@required BranchUniversalObject buo}) {
     BranchEvent branchEvent =
         BranchEvent.standardEvent(BranchStandardEvent.VIEW_ITEM);
 
@@ -259,8 +260,8 @@ class FlutterBranchSdk extends FlutterBranchSdkPlatform {
   ///For iOS:     List items on Spotlight
   @override
   Future<bool> listOnSearch(
-      {required BranchUniversalObject buo,
-      BranchLinkProperties? linkProperties}) async {
+      {@required BranchUniversalObject buo,
+      BranchLinkProperties linkProperties}) async {
     throw UnsupportedError('listOnSearch() Not supported by Branch JS SDK');
   }
 
@@ -269,8 +270,8 @@ class FlutterBranchSdk extends FlutterBranchSdkPlatform {
   ///For iOS:     Remove Branch Universal Object from Spotlight if privately indexed
   @override
   Future<bool> removeFromSearch(
-      {required BranchUniversalObject buo,
-      BranchLinkProperties? linkProperties}) async {
+      {@required BranchUniversalObject buo,
+      BranchLinkProperties linkProperties}) async {
     throw UnsupportedError('removeFromSearch() Not supported by Branch JS SDK');
   }
 
@@ -311,7 +312,7 @@ class FlutterBranchSdk extends FlutterBranchSdkPlatform {
   @Deprecated('version 4.0.0')
   @override
   Future<BranchResponse> redeemRewards(
-      {required int count, String bucket = 'default'}) async {
+      {@required int count, String bucket = 'default'}) async {
     Completer<BranchResponse> responseCompleter = Completer();
 
     try {

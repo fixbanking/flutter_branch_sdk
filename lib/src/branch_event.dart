@@ -41,7 +41,7 @@ class BranchEvent {
   String _eventName = '';
   bool _isStandardEvent = true;
   String transactionID = '';
-  BranchCurrencyType? currency;
+  BranchCurrencyType currency;
   double revenue = -1;
   double shipping = -1;
   double tax = -1;
@@ -49,7 +49,7 @@ class BranchEvent {
   String affiliation = '';
   String eventDescription = '';
   String searchQuery = '';
-  BranchEventAdType? adType;
+  BranchEventAdType adType;
   Map<String, String> _customData = {};
 
   BranchEvent.standardEvent(BranchStandardEvent branchStandardEvent) {
@@ -79,8 +79,8 @@ class BranchEvent {
     ret["isStandardEvent"] = this._isStandardEvent;
     if (this.transactionID.isNotEmpty)
       ret["transactionID"] = this.transactionID;
-    if (this.currency != null)
-      ret["currency"] = getCurrencyTypeString(this.currency!);
+    if (this.currency = null)
+      ret["currency"] = getCurrencyTypeString(this.currency);
     if (this.revenue != -1) ret["revenue"] = this.revenue;
     if (this.shipping != -1) ret["shipping"] = this.shipping;
     if (this.tax != -1) ret["tax"] = this.tax;
@@ -90,7 +90,7 @@ class BranchEvent {
       ret["eventDescription"] = this.eventDescription;
     if (this.searchQuery.isNotEmpty) ret["searchQuery"] = this.searchQuery;
     if (this.adType != null)
-      ret["adType"] = getBranchEventAdTypeString(this.adType!);
+      ret["adType"] = getBranchEventAdTypeString(this.adType);
     if (this._customData.isNotEmpty) ret["customData"] = _customData;
     return ret;
   }
@@ -101,7 +101,7 @@ class BranchEvent {
       if (this.transactionID.isNotEmpty)
         ret["transactionID"] = this.transactionID;
       if (this.currency != null)
-        ret["currency"] = getCurrencyTypeString(this.currency!);
+        ret["currency"] = getCurrencyTypeString(this.currency);
       if (this.revenue != -1) ret["revenue"] = this.revenue;
       if (this.shipping != -1) ret["shipping"] = this.shipping;
       if (this.tax != -1) ret["tax"] = this.tax;
@@ -111,7 +111,7 @@ class BranchEvent {
         ret["eventDescription"] = this.eventDescription;
       if (this.searchQuery.isNotEmpty) ret["searchQuery"] = this.searchQuery;
       if (this.adType != null)
-        ret["adType"] = getBranchEventAdTypeString(this.adType!);
+        ret["adType"] = getBranchEventAdTypeString(this.adType);
     }
     this._customData.forEach((key, value) {
       ret['$key'] = value;
