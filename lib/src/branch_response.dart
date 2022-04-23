@@ -6,10 +6,10 @@ class BranchResponse<T> {
   String errorCode = '';
   String errorMessage = '';
 
-  BranchResponse.success({@required this.result}) {
+  BranchResponse.success({this.result}) {
     this.success = true;
   }
-  BranchResponse.error({@required this.errorCode, @required this.errorMessage}) {
+  BranchResponse.error({this.errorCode, this.errorMessage}) {
     this.success = false;
   }
 

@@ -29,7 +29,7 @@ abstract class FlutterBranchSdkPlatform extends PlatformInterface {
   }
 
   @Deprecated('version 5.0.0')
-  void initWeb({@required String branchKey}) {
+  void initWeb({String branchKey}) {
     throw UnimplementedError('initWeb has not been implemented');
   }
 
@@ -80,16 +80,15 @@ abstract class FlutterBranchSdkPlatform extends PlatformInterface {
 
   ///Creates a short url for the BUO
   Future<BranchResponse> getShortUrl(
-      {@required BranchUniversalObject buo,
-      @required BranchLinkProperties linkProperties}) async {
+      {BranchUniversalObject buo, BranchLinkProperties linkProperties}) async {
     throw UnimplementedError('getShortUrl has not been implemented');
   }
 
   ///Showing a Share Sheet
   Future<BranchResponse> showShareSheet(
-      {@required BranchUniversalObject buo,
-      @required BranchLinkProperties linkProperties,
-      @required String messageText,
+      {BranchUniversalObject buo,
+      BranchLinkProperties linkProperties,
+      String messageText,
       String androidMessageTitle = '',
       String androidSharingTitle = ''}) async {
     throw UnimplementedError('showShareSheet has not been implemented');
@@ -97,26 +96,24 @@ abstract class FlutterBranchSdkPlatform extends PlatformInterface {
 
   ///Logs this BranchEvent to Branch for tracking and analytics
   void trackContent(
-      {@required List<BranchUniversalObject> buo,
-      @required BranchEvent branchEvent}) {
+      {List<BranchUniversalObject> buo, BranchEvent branchEvent}) {
     throw UnimplementedError('trackContent has not been implemented');
   }
 
   ///Logs this BranchEvent to Branch for tracking and analytics
-  void trackContentWithoutBuo({@required BranchEvent branchEvent}) {
+  void trackContentWithoutBuo({BranchEvent branchEvent}) {
     throw UnimplementedError('trackContentWithoutBuo has not been implemented');
   }
 
   ///Mark the content referred by this object as viewed. This increment the view count of the contents referred by this object.
-  void registerView({@required BranchUniversalObject buo}) {
+  void registerView({BranchUniversalObject buo}) {
     throw UnimplementedError('registerView has not been implemented');
   }
 
   ///For Android: Publish this BUO with Google app indexing so that the contents will be available with google search
   ///For iOS:     List items on Spotlight
   Future<bool> listOnSearch(
-      {@required BranchUniversalObject buo,
-      BranchLinkProperties linkProperties}) async {
+      {BranchUniversalObject buo, BranchLinkProperties linkProperties}) async {
     throw UnimplementedError('listOnSearch has not been implemented');
   }
 
@@ -124,8 +121,7 @@ abstract class FlutterBranchSdkPlatform extends PlatformInterface {
   ///             This will remove the content from Google(Firebase) and other supported Indexing services
   ///For iOS:     Remove Branch Universal Object from Spotlight if privately indexed
   Future<bool> removeFromSearch(
-      {@required BranchUniversalObject buo,
-      BranchLinkProperties linkProperties}) async {
+      {BranchUniversalObject buo, BranchLinkProperties linkProperties}) async {
     throw UnimplementedError('removeFromSearch has not been implemented');
   }
 
@@ -140,7 +136,7 @@ abstract class FlutterBranchSdkPlatform extends PlatformInterface {
   ///available credits will be redeemed instead.
   @Deprecated('version 4.0.0')
   Future<BranchResponse> redeemRewards(
-      {@required int count, String bucket = 'default'}) async {
+      {int count, String bucket = 'default'}) async {
     throw UnimplementedError('redeemRewards has not been implemented');
   }
 

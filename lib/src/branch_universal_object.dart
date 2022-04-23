@@ -47,7 +47,7 @@ class BranchUniversalObject {
 
   ///Create a BranchUniversalObject with the given content.
   BranchUniversalObject(
-      {@required this.canonicalIdentifier,
+      {this.canonicalIdentifier,
       this.canonicalUrl = '',
       this.title = '',
       this.contentDescription = '',
@@ -102,8 +102,7 @@ class BranchUniversalObject {
     ret["locallyIndex"] = this.locallyIndex;
     ret["publiclyIndex"] = this.publiclyIndex;
 
-    if (this.contentMetadata != null &&
-        this.contentMetadata.toMap().isNotEmpty)
+    if (this.contentMetadata != null && this.contentMetadata.toMap().isNotEmpty)
       ret["contentMetadata"] = this.contentMetadata.toMap();
 
     if (ret.isEmpty) {

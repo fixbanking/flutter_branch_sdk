@@ -33,7 +33,7 @@ class FlutterBranchSdkMobile implements FlutterBranchSdkPlatform {
 
   @Deprecated('version 5.0.0')
   @override
-  void initWeb({@required String branchKey}) {
+  void initWeb({String branchKey}) {
     //nothing
   }
 
@@ -103,8 +103,7 @@ class FlutterBranchSdkMobile implements FlutterBranchSdkPlatform {
   ///Creates a short url for the BUO
   @override
   Future<BranchResponse> getShortUrl(
-      {@required BranchUniversalObject buo,
-      @required BranchLinkProperties linkProperties}) async {
+      {BranchUniversalObject buo, BranchLinkProperties linkProperties}) async {
     Map<String, dynamic> _params = {};
     _params['buo'] = buo.toMap();
     _params['lp'] = linkProperties.toMap();
@@ -124,9 +123,9 @@ class FlutterBranchSdkMobile implements FlutterBranchSdkPlatform {
   ///Showing a Share Sheet
   @override
   Future<BranchResponse> showShareSheet(
-      {@required BranchUniversalObject buo,
-      @required BranchLinkProperties linkProperties,
-      @required String messageText,
+      {BranchUniversalObject buo,
+      BranchLinkProperties linkProperties,
+      String messageText,
       String androidMessageTitle = '',
       String androidSharingTitle = ''}) async {
     Map<String, dynamic> _params = {};
@@ -151,8 +150,7 @@ class FlutterBranchSdkMobile implements FlutterBranchSdkPlatform {
   ///Logs this BranchEvent to Branch for tracking and analytics
   @override
   void trackContent(
-      {@required List<BranchUniversalObject> buo,
-      @required BranchEvent branchEvent}) {
+      {List<BranchUniversalObject> buo, BranchEvent branchEvent}) {
     Map<String, dynamic> _params = {};
 
     _params['buo'] = buo.map((b) => b.toMap()).toList();
@@ -164,7 +162,7 @@ class FlutterBranchSdkMobile implements FlutterBranchSdkPlatform {
 
   ///Logs this BranchEvent to Branch for tracking and analytics
   @override
-  void trackContentWithoutBuo({@required BranchEvent branchEvent}) {
+  void trackContentWithoutBuo({BranchEvent branchEvent}) {
     Map<String, dynamic> _params = {};
 
     if (branchEvent.toMap().isEmpty) {
@@ -177,7 +175,7 @@ class FlutterBranchSdkMobile implements FlutterBranchSdkPlatform {
 
   ///Mark the content referred by this object as viewed. This increment the view count of the contents referred by this object.
   @override
-  void registerView({@required BranchUniversalObject buo}) {
+  void registerView({BranchUniversalObject buo}) {
     Map<String, dynamic> _params = {};
 
     _params['buo'] = buo.toMap();
@@ -189,8 +187,7 @@ class FlutterBranchSdkMobile implements FlutterBranchSdkPlatform {
   ///For iOS:     List items on Spotlight
   @override
   Future<bool> listOnSearch(
-      {@required BranchUniversalObject buo,
-      BranchLinkProperties linkProperties}) async {
+      {BranchUniversalObject buo, BranchLinkProperties linkProperties}) async {
     Map<String, dynamic> _params = {};
 
     _params['buo'] = buo.toMap();
@@ -206,8 +203,7 @@ class FlutterBranchSdkMobile implements FlutterBranchSdkPlatform {
   ///For iOS:     Remove Branch Universal Object from Spotlight if privately indexed
   @override
   Future<bool> removeFromSearch(
-      {@required BranchUniversalObject buo,
-      BranchLinkProperties linkProperties}) async {
+      {BranchUniversalObject buo, BranchLinkProperties linkProperties}) async {
     Map<String, dynamic> _params = {};
     _params['buo'] = buo.toMap();
     if (linkProperties != null && linkProperties.toMap().isNotEmpty) {
@@ -239,7 +235,7 @@ class FlutterBranchSdkMobile implements FlutterBranchSdkPlatform {
   ///available credits will be redeemed instead.
   @override
   Future<BranchResponse> redeemRewards(
-      {@required int count, String bucket = 'default'}) async {
+      {int count, String bucket = 'default'}) async {
     Map<String, dynamic> _params = {};
     _params['count'] = count;
     _params['bucket'] = bucket;

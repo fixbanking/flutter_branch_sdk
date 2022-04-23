@@ -9,7 +9,7 @@ class FlutterBranchSdk {
   }
 
   @Deprecated('version 5.0.0')
-  static void initWeb({@required String branchKey}) {
+  static void initWeb({String branchKey}) {
     _platform.initWeb(branchKey: branchKey);
   }
 
@@ -58,16 +58,15 @@ class FlutterBranchSdk {
 
   ///Creates a short url for the BUO
   static Future<BranchResponse> getShortUrl(
-      {@required BranchUniversalObject buo,
-      @required BranchLinkProperties linkProperties}) async {
+      {BranchUniversalObject buo, BranchLinkProperties linkProperties}) async {
     return _platform.getShortUrl(buo: buo, linkProperties: linkProperties);
   }
 
   ///Showing a Share Sheet
   static Future<BranchResponse> showShareSheet(
-      {@required BranchUniversalObject buo,
-      @required BranchLinkProperties linkProperties,
-      @required String messageText,
+      {BranchUniversalObject buo,
+      BranchLinkProperties linkProperties,
+      String messageText,
       String androidMessageTitle = '',
       String androidSharingTitle = ''}) async {
     return _platform.showShareSheet(
@@ -80,26 +79,24 @@ class FlutterBranchSdk {
 
   ///Logs this BranchEvent to Branch for tracking and analytics
   static void trackContent(
-      {@required List<BranchUniversalObject> buo,
-      @required BranchEvent branchEvent}) {
+      {List<BranchUniversalObject> buo, BranchEvent branchEvent}) {
     return _platform.trackContent(buo: buo, branchEvent: branchEvent);
   }
 
   ///Logs this BranchEvent to Branch for tracking and analytics
-  static void trackContentWithoutBuo({@required BranchEvent branchEvent}) {
+  static void trackContentWithoutBuo({BranchEvent branchEvent}) {
     return _platform.trackContentWithoutBuo(branchEvent: branchEvent);
   }
 
   ///Mark the content referred by this object as viewed. This increment the view count of the contents referred by this object.
-  static void registerView({@required BranchUniversalObject buo}) {
+  static void registerView({BranchUniversalObject buo}) {
     return _platform.registerView(buo: buo);
   }
 
   ///For Android: Publish this BUO with Google app indexing so that the contents will be available with google search
   ///For iOS:     List items on Spotlight
   static Future<bool> listOnSearch(
-      {@required BranchUniversalObject buo,
-      BranchLinkProperties linkProperties}) async {
+      {BranchUniversalObject buo, BranchLinkProperties linkProperties}) async {
     return _platform.listOnSearch(buo: buo, linkProperties: linkProperties);
   }
 
@@ -107,8 +104,7 @@ class FlutterBranchSdk {
   ///             This will remove the content from Google(Firebase) and other supported Indexing services
   ///For iOS:     Remove Branch Universal Object from Spotlight if privately indexed
   static Future<bool> removeFromSearch(
-      {@required BranchUniversalObject buo,
-      BranchLinkProperties linkProperties}) async {
+      {BranchUniversalObject buo, BranchLinkProperties linkProperties}) async {
     return _platform.removeFromSearch(buo: buo, linkProperties: linkProperties);
   }
 
@@ -123,7 +119,7 @@ class FlutterBranchSdk {
   ///available credits will be redeemed instead.
   @Deprecated('version 4.0.0')
   static Future<BranchResponse> redeemRewards(
-      {@required int count, String bucket = 'default'}) async {
+      {int count, String bucket = 'default'}) async {
     return _platform.redeemRewards(count: count, bucket: bucket);
   }
 
