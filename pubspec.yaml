@@ -4,7 +4,7 @@ version: 5.0.0
 homepage: https://github.com/RodrigoSMarques/flutter_branch_sdk
 
 environment:
-  sdk: ">=2.10.5 <3.0.0"
+  sdk: ">=2.9.2 <3.0.0"
   flutter: ">=1.20.0"
 
 flutter:
