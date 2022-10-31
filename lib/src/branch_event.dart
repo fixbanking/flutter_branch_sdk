@@ -79,7 +79,7 @@ class BranchEvent {
     ret["isStandardEvent"] = this._isStandardEvent;
     if (this.transactionID.isNotEmpty)
       ret["transactionID"] = this.transactionID;
-    if (this.currency = null)
+    if (this.currency != null)
       ret["currency"] = getCurrencyTypeString(this.currency);
     if (this.revenue != -1) ret["revenue"] = this.revenue;
     if (this.shipping != -1) ret["shipping"] = this.shipping;
